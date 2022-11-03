@@ -4,6 +4,7 @@ from ursina import Keys
 app = Ursina()
 
 player = FirstPersonController()
+skybox = load_texture("earth_from_space.png")
 Sky()
 cube = Entity(model='cube', color=color.orange, scale=(2,2,2))
 
@@ -16,12 +17,22 @@ window.fps_counter.enabled = True       # Show the FPS (Frames per second) count
 def add_object_box(position):
     Button(
         parent=scene,
-        model='cube',
+        model='sphere',
         origin=0.5,
-        color=color.black,
-        position=position
+        color=color.brown,
+        position=position,
+        texture='grass',
+        scale=(9,9,9)
     )
 
-add_object_box( (0,0,0) )
+for i in range(20):
+    for j in range(20):
+        add_object_box( (i,0,j) )
+   
+
+
+
+
+
 
 app.run()                     # opens a window and starts the game.
